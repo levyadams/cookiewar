@@ -1,7 +1,7 @@
 <script>
   export let day = 1;
 
-  function nextDay() {
+  export function nextDay() {
     day += 1;
   }
 </script>

@@ -5,6 +5,7 @@ export const locations = [
         name:'brownstown',
         cookieWeight: .5,
         priceSpread:9,
+        riskValue:2,
         localPrices: [
             {name:'semonas',price:0},
             {name:'mintz',price:0},
@@ -16,8 +17,9 @@ export const locations = [
     },
      {
         name:'regsville',
-        cookieWeight: .75,
+        cookieWeight: .55,
         priceSpread:7,
+        riskValue:4,
         localPrices: [
             {name:'semonas',price:0},
             {name:'mintz',price:0},
@@ -29,8 +31,9 @@ export const locations = [
     },
      {
         name:'midscity',
-        cookieWeight: 1,
+        cookieWeight: .6,
         priceSpread:4,
+        riskValue:6,
         localPrices: [
             {name:'semonas',price:0},
             {name:'mintz',price:0},
@@ -42,8 +45,9 @@ export const locations = [
     },
     {
         name:'Le Pew',
-        cookieWeight: 1.5,
+        cookieWeight: .75,
         priceSpread:9,
+        riskValue:8,
         localPrices: [
             {name:'semonas',price:0},
             {name:'mintz',price:0},
@@ -59,44 +63,48 @@ export const cookies = [
     {
         name:'semonas',
         icon:'icon-spinner5',
-        minPrice:5,
-        maxPrice:100
+        minPrice:2,
+        maxPrice:8,
+        boxesOwned:0
     },
     {
         name:'mintz',
         icon:'icon-spinner5',
-
-        minPrice:3,
-        maxPrice:75
-
+        minPrice:2,
+        maxPrice:5,
+        boxesOwned:0
     },
     {
         name:'shmores',
         icon:'icon-spinner5',
-
         minPrice:2,
-        maxPrice:65
-
+        maxPrice:5,
+        boxesOwned:0
     },
     {
         name:'chipz',
         icon:'icon-spinner5',
+        minPrice:2,
+        maxPrice:5,
+        boxesOwned:0
 
-        minPrice:1,
-        maxPrice:40
 
     },
     {
         name:'wagalongs',
         icon:'icon-spinner5',
-        minPrice:1,
-        maxPrice:50
+        minPrice:2,
+        maxPrice:5,
+        boxesOwned:0
+
     },
     {
         name:'patties',
         icon:'icon-spinner5',
-        minPrice:3,
-        maxPrice:80
+        minPrice:2,
+        maxPrice:5,
+        boxesOwned:0
+
     }
 
 ];

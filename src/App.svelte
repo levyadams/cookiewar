@@ -1,11 +1,9 @@
 <script>
 	import GameManager from './modules/gameManager.svelte';
-	import Time from './modules/time.svelte';
 
 </script>
 
 <main>
-<Time />
 <GameManager />
 
 </main>

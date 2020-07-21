@@ -1,8 +1,7 @@
 <script>
   export let cookieLabel;
-  export let cookiePrice;
   export let icon;
-  export let ownedLabel;
+  export let boxesOwned;
 </script>
 
 <style>
@@ -12,6 +11,7 @@
   p,
   h2 {
     color: rgb(24, 131, 10);
+    margin-bottom:5px;
   }
   .icon {
     font-size: 16px;
@@ -31,7 +31,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 50%;
   }
   .expanded-container {
     position: relative;
@@ -54,10 +53,9 @@
 
 <div class="cookie-item" on:click>
   <h2>{cookieLabel}</h2>
-  <p class="money">$: {cookiePrice}</p>
   <div class="{icon} icon-main" />
   <div class="owned-container">
-    <div class="icon-database icon" />
-    <p>: {ownedLabel}</p>
+    <div class="icon-database icon"></div>
+    <p>: {boxesOwned}</p>
   </div>
 </div>
