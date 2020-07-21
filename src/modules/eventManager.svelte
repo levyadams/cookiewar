@@ -9,10 +9,10 @@
         if(cash>=5000){
             cash = cash - 5000;
             loanPaid = true;
-            alert('Ma: "great work. Good luck out there, sweetheart!"');
+            alert("Ma': 'great work. Good luck out there, sweetheart!'");
         }
         else{
-            alert('You dont have enough cash!');
+            alert("Ma':'You dont have enough cash, sweetheart!'");
         }
     };
 </script>
