@@ -43,6 +43,7 @@
   let assetsWindow;
   let loanPaid;
 
+
   //working with stores inside of svelte. Works great for global
   //data that is too distant from each other to simply raise state
   function addOrRemoveCash(val, add) {
@@ -218,5 +219,5 @@
     bind:menuHidden={locationWindowHidden}
     bind:currentDay />
 
-  <EventManager bind:cash={$cash} bind:loanPaid />
+  <EventManager bind:cash={$cash} bind:loanPaid bind:locations={locations} />
 </main>
