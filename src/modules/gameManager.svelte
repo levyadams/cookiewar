@@ -9,6 +9,10 @@
   import MarketWindow from "./marketWindow.svelte";
   import LocationsWindow from "./locationsWindow.svelte";
   import EventManager from "./eventManager.svelte";
+  import EventWindow from "./eventWindow.svelte";
+  import AssetWindow from "./assetWindow.svelte";
+  import InfoWindow from "./infoWindow.svelte";
+  import SafehouseWindow from "./safehouseWindow.svelte";
 
   let locations = _locations;
   let cookies = _cookies;
@@ -27,8 +31,6 @@
   let marketCookiesOwned;
 
   $: {
-  }
-  $: {
     cookies.map((cookie) => {
       if (marketWindowTitle === cookie.name) {
         cookie.boxesOwned = marketCookiesOwned;
@@ -40,8 +42,19 @@
   let locationsWindow;
   let locationWindowHidden = true;
 
-  let assetsWindow;
+  let assetWindow;
   let loanPaid;
+  let assetWindowHidden = true;
+
+  let eventWindowMessage;
+  let eventMessage;
+
+  let safehouseWindow;
+  let safehouseWindowHidden = true;
+
+  $:{
+    eventWindowMessage = eventMessage;
+  }
 
 
   //working with stores inside of svelte. Works great for global
@@ -108,6 +121,16 @@
       locationWindowHidden = true;
     }
   }
+   function toggleAssetWindow() {
+    if (assetWindowHidden) {
+      assetWindowHidden = false;
+    } else {
+      locationWindowHidden = true;
+    }
+  }
+  function toggleSafehouseWindow(){
+
+  };
   function formatMoney(
     amount,
     decimalCount = 2,
@@ -169,13 +192,25 @@
     justify-content: center;
     align-items: center;
   }
+  .nav-container{
+    display:flex;
+    justify-content: space-between;
+  }
+  .nav-button{
+    width:32.5%;
+  }
+ 
   .local-price {
     margin-bottom: 15px;
+  }
+  .hidden{
+    display:none;
   }
 </style>
 
 <main>
-  <Time bind:day={currentDay} />
+    <InfoWindow bind:cash={$cash} bind:currentDay={currentDay}/>
+<h2>Day {currentDay}</h2>
   <h2 class="cash-header">${$cash}</h2>
 
   <MarketWindow
@@ -190,7 +225,8 @@
 
   <h2 class="location-header">{currentArea.name}</h2>
 
-  <button on:click={() => toggleLocationsWindow()}>Take a drive..</button>
+  <EventWindow bind:windowMessage={eventWindowMessage} />
+
   <div class="cookie-container">
     {#each cookies as cookie}
       <div class="layout-container">
@@ -217,7 +253,38 @@
     {locations}
     bind:currentLocation={currentArea}
     bind:menuHidden={locationWindowHidden}
-    bind:currentDay />
+    bind:currentDay 
+    />
 
-  <EventManager bind:cash={$cash} bind:loanPaid bind:locations={locations} />
+  <div class="nav-container">
+
+    <div class="nav-button">
+      <Time bind:day={currentDay}/>
+    </div>
+    <div class="nav-button">
+    <button on:click={() => toggleLocationsWindow()}><div class="icon-truck"></div></button>
+    </div>
+
+    <div class="nav-button">
+    <EventManager bind:locations={locations} bind:windowMessage={eventMessage} />
+    <AssetWindow 
+    bind:assetWindowHidden={assetWindowHidden}
+    bind:this={assetWindow}
+    bind:cash={$cash}
+    bind:currentLocation={currentArea}
+    />
+    </div>
+    
+    <div class="extras-container">
+      <div class="nav-buttons">
+        <SafehouseWindow 
+          bind:cash={$cash}
+          bind:currentLocation={currentArea}
+        />
+    <button class:hidden={!currentArea.safehouse} on:click={() => toggleSafehouseWindow()}><div >$</div></button>
+
+      </div>
+    </div>
+
+  </div>
 </main>

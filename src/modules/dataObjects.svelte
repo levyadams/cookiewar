@@ -6,6 +6,9 @@ export const locations = [
         cookieWeight: .5,
         priceSpread:9,
         riskValue:2,
+        safehouse:false,
+        safehousePrice:2000,
+        safehouseLoot:0,
         localPrices: [
             {name:'semonas',price:0},
             {name:'mintz',price:0},
@@ -20,6 +23,9 @@ export const locations = [
         cookieWeight: .55,
         priceSpread:7,
         riskValue:4,
+        safehouse:false,
+        safehousePrice:2000,
+        safehouseLoot:0,
         localPrices: [
             {name:'semonas',price:0},
             {name:'mintz',price:0},
@@ -34,6 +40,9 @@ export const locations = [
         cookieWeight: .6,
         priceSpread:4,
         riskValue:6,
+        safehouse:false,
+        safehousePrice:2000,
+        safehouseLoot:0,
         localPrices: [
             {name:'semonas',price:0},
             {name:'mintz',price:0},
@@ -48,6 +57,9 @@ export const locations = [
         cookieWeight: .75,
         priceSpread:9,
         riskValue:8,
+        safehouse:false,
+        safehousePrice:2000,
+        safehouseLoot:0,
         localPrices: [
             {name:'semonas',price:0},
             {name:'mintz',price:0},

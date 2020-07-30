@@ -5,6 +5,7 @@
         <button on:click={()=>changeCurrentLocation(location)}>{location.name}</button>
         {/if}
     {/each}
+    <button on:click={()=> menuHidden = true}>back</button>
     </div>
 </main>
 <script>

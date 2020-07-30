@@ -20,10 +20,12 @@
     margin-top: 0;
     margin-bottom: 10px;
   }
+  .icon-history{
+    transform:scaleX(-1);
+  }
 
 </style>
 
 <main>
-  <h1>Day {day}</h1>
-  <button on:click={() => nextDay()}>Rest a day</button>
+  <button on:click={()=> nextDay()}><div class="icon-history"></div></button>
 </main>

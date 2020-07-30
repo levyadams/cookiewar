@@ -1,18 +1,16 @@
 <main>
-    <button class:hidden={loanPaid} on:click={()=> paybackLoan()}>Pay back loan!</button>
 </main>
 <script>
     export let locations;
 
-    export let cash;
-    export let loanPaid = false;
+    export let windowMessage = '';
 
     export let currentDay = 0;
     export const increaseMessages=[
-        {0:`Feminist convention in`,1:`skyrocket!`},
-        {0:`MRA convention in`,1:`prices go nuts!`},
+        {0:`Feminist convention in`,1:`prices are empowered!`},
+        {0:`MRA convention in`,1:`prices go their own way..up!`},
         {0:`Communism convention in`,1:`prices flourish!`},
-        {0:`Gaming convention in`,1:`prices skyhigh!`},
+        {0:`Gaming convention in`,1:`prices are epic rn`},
         {0:`Anime convention in`,1:`prices bulge oWo`},
         {0:`Furry convention in`,1:`*prices bulge* oWo`}
     ];
@@ -28,7 +26,7 @@
     //cookie event handler
     $:{
         let randyVal = Math.round(Math.random() * 10);
-        if(randyVal > 1){
+        if(randyVal > 8){
             let randyVal1 = Math.round(Math.random() * 10);
            if(currentDay<15){
               if(randyVal1<=5){
@@ -39,19 +37,18 @@
         }
 
     }
-    make window for viewing news alerts
     let randomizeCookie=(increase)=>{
         let randoLocation = locations[Math.round(Math.random() * 3)];
         let randoCookie = randoLocation.localPrices[Math.round(Math.random() * 5)];
 
         if(increase){
             randoCookie.price = parseFloat(randoCookie.price * Math.round(Math.random()*10).toFixed(2));
-            return console.log(returnRandoCookieMessage(true,randoLocation,randoCookie));
+            windowMessage = returnRandoCookieMessage(true,randoLocation,randoCookie);
         }
         else{
             let randyPrice = randoCookie.price / 3;
             randoCookie.price = parseFloat(randyPrice.toFixed(2));
-            return console.log(returnRandoCookieMessage(false,randoLocation,randoCookie));
+            windowMessage = returnRandoCookieMessage(false,randoLocation,randoCookie);
         }
     };
 
@@ -74,16 +71,7 @@
         }
     }
 
-    let paybackLoan =()=>{
-        if(cash>=5000){
-            cash = cash - 5000;
-            loanPaid = true;
-            alert("Ma': 'great work..Good luck out there, sweetheart!'");
-        }
-        else{
-            alert("Ma':'You dont have enough cash, sweetheart!'");
-        }
-    };
+   
 </script>
 
 <style>
