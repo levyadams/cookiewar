@@ -12,8 +12,6 @@ import AssetManager from './assetManager.svelte';
 
 export let currentLocation;
 
-finish making the safehouse window pop up
-
 export let assetWindowHidden = true;
 
 export let loanPaid = false;

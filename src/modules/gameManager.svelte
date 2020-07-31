@@ -66,38 +66,8 @@
       cash.update((n) => n - val);
     }
   }
-  //iterate through location.localPrices and set the towns
-  //local cookie prices based on the weightedNumberGenerator.
-  function setCookiePrices() {
-    locations.map((location) => {
-      location.localPrices.map((cookiePrice) => {
-        cookies.map((cookie) => {
-          if (cookie.name === cookiePrice.name) {
-            cookiePrice.price = weightedNumberGenerator(
-              location.priceSpread,
-              [cookie.minPrice, cookie.maxPrice],
-              location.cookieWeight
-            );
-            locations = [...locations];
-          }
-        });
-      });
-    });
-  }
 
-  //remove
-  setCookiePrices();
 
-  function weightedNumberGenerator(spread, range, weight) {
-    let spreadVal = Math.round(Math.random() * 10);
-    let rangeValue = Math.random() * (range[1] - range[0] + 1) + range[0];
-    if (spreadVal <= spread) {
-      let newVal = rangeValue * weight;
-      return parseFloat(newVal.toFixed(2));
-    } else {
-      return parseFloat(rangeValue.toFixed(2));
-    }
-  }
 
   function toggleCookieWindow(cookieName, cookiesOwned) {
     marketWindowTitle = cookieName;
@@ -129,7 +99,7 @@
     }
   }
   function toggleSafehouseWindow(){
-
+    safehouseWindowHidden ? safehouseWindowHidden = false:safehouseWindowHidden=true;
   };
   function formatMoney(
     amount,
@@ -266,7 +236,7 @@
     </div>
 
     <div class="nav-button">
-    <EventManager bind:locations={locations} bind:windowMessage={eventMessage} />
+    <EventManager bind:locations={locations} bind:cookies={cookies} bind:windowMessage={eventMessage} bind:currentDay={currentDay} />
     <AssetWindow 
     bind:assetWindowHidden={assetWindowHidden}
     bind:this={assetWindow}
@@ -280,6 +250,7 @@
         <SafehouseWindow 
           bind:cash={$cash}
           bind:currentLocation={currentArea}
+          bind:windowHidden={safehouseWindowHidden}
         />
     <button class:hidden={!currentArea.safehouse} on:click={() => toggleSafehouseWindow()}><div >$</div></button>
 
