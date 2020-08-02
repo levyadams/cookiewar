@@ -74,51 +74,41 @@ export const locations = [
 export const cookies = [
     {
         name:'semonas',
-        icon:'icon-spinner5',
         minPrice:2,
         maxPrice:8,
-        boxesOwned:0
+        boxesOwned:0,
     },
     {
         name:'mintz',
-        icon:'icon-spinner5',
         minPrice:2,
         maxPrice:5,
         boxesOwned:0
+
     },
     {
         name:'shmores',
-        icon:'icon-spinner5',
         minPrice:2,
         maxPrice:5,
         boxesOwned:0
     },
     {
         name:'chipz',
-        icon:'icon-spinner5',
         minPrice:2,
         maxPrice:5,
         boxesOwned:0
-
-
     },
     {
         name:'wagalongs',
-        icon:'icon-spinner5',
         minPrice:2,
         maxPrice:5,
         boxesOwned:0
-
     },
     {
         name:'patties',
-        icon:'icon-spinner5',
         minPrice:2,
         maxPrice:5,
         boxesOwned:0
-
     }
-
 ];
 
 </script>

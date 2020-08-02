@@ -15,7 +15,6 @@ export let menuHidden = false;
 export let currentDay = 0;
 export function changeCurrentLocation(location){
     if(rollForEvent(location.riskValue)){
-        console.log('event!');
         currentLocation = location;
         menuHidden = true;
         currentDay++;

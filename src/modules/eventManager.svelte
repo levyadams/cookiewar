@@ -5,10 +5,11 @@
 
   export let windowMessage = "";
 
+  let daysToDisplayMessage = 0;
+
   export let currentDay = 0;
 
   let cookieEvent = false;
-  let cookieEventDaysUntil = 0;
 
   export const increaseMessages = [
     { 0: `Feminist convention in`, 1: `prices are empowered!` },
@@ -34,16 +35,15 @@
   $: {
     if (currentDay > 1) {
       rollForCookieEvent();
-    }
-    console.log(cookieEventDaysUntil);
-    if (cookieEventDaysUntil > 0) {
-      cookieEventDaysUntil = cookieEventDaysUntil - 1;
-      if (cookieEventDaysUntil === 0) {
-          console.log('set cookie prices!');
-        setCookiePrices();
+      rollForCookiePriceChange();
+      if(daysToDisplayMessage>0){
+          daysToDisplayMessage -= 1;
       }
+      else{
+          windowMessage = "";
+      }
+    
     }
-
   }
   let weightedNumberGenerator = (spread, range, weight) => {
     let spreadVal = Math.round(Math.random() * 10);
@@ -56,17 +56,6 @@
     }
   };
 
-  let weightedEventDayTimer = (val)=>{
-      if(val >= 9 ){
-          return 1;
-      }
-      else{
-         return Math.round(Math.random() * Math.floor(val));
-      }
-
-  };
-
-work with events so it flows well with a 45 day game trial
   //iterate through location.localPrices and set the towns
   //local cookie prices based on the weightedNumberGenerator.
   let setCookiePrices = () => {
@@ -90,8 +79,8 @@ work with events so it flows well with a 45 day game trial
 
   let rollForCookieEvent = () => {
     //each day, roll for cookie event. ~15% chance.
-    let randyVal = parseFloat((Math.random() * 10).toFixed(2));
-    if (randyVal >= 8.5) {
+    let randyVal = parseFloat((Math.random() * 10).toFixed(1));
+    if (randyVal >= 8.1) {
       let randyVal1 = parseFloat((Math.random() * 10).toFixed(2));
       if (currentDay < 15) {
           let cookieReturnVal = 0;
@@ -101,8 +90,6 @@ work with events so it flows well with a 45 day game trial
          cookieReturnVal = randomizeCookie(false);
         }
         cookieEvent = true;
-        cookieEventDaysUntil = weightedEventDayTimer(cookieReturnVal);
-
       }
       //cookie events drop after day 15 for added difficulty 9% chance.
       else {
@@ -113,12 +100,21 @@ work with events so it flows well with a 45 day game trial
         cookieReturnVal = randomizeCookie(false);
         }
         cookieEvent = true;
-        cookieEventDaysUntil = weightedEventDayTimer(cookieReturnVal);
-
-
       }
     }
   };
+
+  let rollForCookiePriceChange =()=>{
+    let randyNom = parseFloat((Math.random() * 10).toFixed(1));
+    if(randyNom <= 3.5){
+        setCookiePrices();
+        return true;
+    }
+    else{
+        return false;
+    }
+  };
+
   let randomizeCookie = (increase) => {
     let randoLocation = locations[Math.round(Math.random() * 3)];
     let randoCookie = randoLocation.localPrices[Math.round(Math.random() * 5)];
@@ -151,6 +147,7 @@ work with events so it flows well with a 45 day game trial
         oof = 0;
       }
       let message = increaseMessages[oof];
+      daysToDisplayMessage = 2;
       return `${message[0]} ${location.name}, ${cookie.name} ${message[1]}`;
     } else {
       let oof = Math.floor(Math.random() * decreaseMessages.length - 1);
@@ -158,6 +155,7 @@ work with events so it flows well with a 45 day game trial
         oof = 0;
       }
       let message = decreaseMessages[oof];
+      daysToDisplayMessage = 2;
       return `${message[0]} ${location.name}, ${cookie.name} ${message[1]}`;
     }
   };

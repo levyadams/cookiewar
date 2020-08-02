@@ -166,4 +166,7 @@
   content: "\e94d";
   transform:scaleX(-1);
 }
+:global(.icon-history:before) {
+  content: "\e94d";
+}
 </style>

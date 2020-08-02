@@ -133,6 +133,8 @@
       console.log(e);
     }
   }
+
+
 </script>
 
 <style>
@@ -253,6 +255,7 @@
           bind:windowHidden={safehouseWindowHidden}
         />
     <button class:hidden={!currentArea.safehouse} on:click={() => toggleSafehouseWindow()}><div >$</div></button>
+    
 
       </div>
     </div>

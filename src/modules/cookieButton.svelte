@@ -1,6 +1,5 @@
 <script>
   export let cookieLabel;
-  export let icon;
   export let boxesOwned;
 </script>
 
@@ -31,6 +30,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    align-items:center;
   }
   .expanded-container {
     position: relative;
@@ -45,15 +45,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  
+  }
+  .owned-container>p{
+    margin:5px 0 5px;
   }
   .money {
     color: rgb(5, 228, 5);
+  }
+  img{
+    width:30px;
+    height:30px;
   }
 </style>
 
 <div class="cookie-item" on:click>
   <h2>{cookieLabel}</h2>
-  <div class="{icon} icon-main" />
+ <img src='./images/{cookieLabel}.svg' alt="">
   <div class="owned-container">
     <div class="icon-database icon"></div>
     <p>: {boxesOwned}</p>
