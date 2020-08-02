@@ -17,6 +17,11 @@
   let locations = _locations;
   let cookies = _cookies;
 
+  let formattedCash;
+  $:{
+    formattedCash = formatMoney($cash);
+  }
+
   let itemExpanded = false;
 
   export let currentArea = locations[0];
@@ -183,7 +188,7 @@
 <main>
     <InfoWindow bind:cash={$cash} bind:currentDay={currentDay}/>
 <h2>Day {currentDay}</h2>
-  <h2 class="cash-header">${$cash}</h2>
+  <h2 class="cash-header">${formattedCash}</h2>
 
   <MarketWindow
     bind:hidden={marketWindowClosed}

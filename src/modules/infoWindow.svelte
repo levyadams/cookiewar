@@ -1,6 +1,14 @@
 <main>
     <div class:hidden={infoWindowHidden} class="info-container">
-        <p class:hidden={!startGame}>{firstMessage}</p>
+        <div class:hidden={!startGame} class="firstContainer">
+        <p>'Ma brings you close</p>
+        <p>"My time is almost up, my love.."</p>
+        <p>"It's your turn to take over the biz!"</p>
+        <p>Take a $2,500 loan from grandma and turn it into your fortune.</p>
+        <p>In 45 days...</p>
+        <p>Don't forget to cut 'Ma in</p>
+        <p>And watch out for fools trying to snatch your stash!</p>
+        </div>
         <p class:hidden={!endGame}>{finishMessage}</p>
         <button on:click={()=>startingMessageFunction()}>OK!</button>
     </div>
@@ -9,14 +17,13 @@
 <script>
     export let currentDay = 0;
     export let cash;
-    export let firstMessage = "This game...and really this entire site, are a WIP and the only reason you are reading this is because I like testing on live instances."
     export let finishMessage = `Game over! Your score was ${cash}`;
     export let startGame = true;
     export let endGame = false;
     export let infoWindowHidden = false;
 
     $:{
-        if(currentDay === 31){
+        if(currentDay === 46){
             infoWindowHidden = false;
 
             endGame = true;

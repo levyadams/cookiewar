@@ -2,6 +2,9 @@
   <div class="market-container" class:switched={buying} class:hidden>
     <div class="layout-container">
       <h2>{windowTitle}</h2>
+      {#if windowTitle}
+      <img class="window-cookie" src="./images/{windowTitle}.svg" alt="">
+      {/if}
       <div class={windowIcon} />
       <p>$: {cookiePrice}</p>
       <p>boxes owned: {boxesOwned}</p>
@@ -52,6 +55,8 @@
 
   export let buying = true;
   export let hidden = false;
+
+  let spinClockwise = true;
 
 //loan calc
   $: {
@@ -120,9 +125,20 @@
   function resetBuySellAmount() {
     return (buySellAmount = 0);
   }
+  function mouseOverCookie(){
+    console.log('mouseover!');
+    if(spinClockwise){
+      spinClockwise = false;
+    }
+    else{
+      spinClockwise = true;
+    }
+
+  }
 </script>
 
 <style>
+
   .market-container {
     width: calc(100% - 30px);
     display: flex;
@@ -235,4 +251,9 @@
   .loan-text{
     color:rgb(184, 13, 13);
   }
+  img{
+    width:80px;
+    height:80px;
+  }
+
 </style>

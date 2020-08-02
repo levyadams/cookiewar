@@ -54,14 +54,14 @@
     color: rgb(5, 228, 5);
   }
   img{
-    width:30px;
-    height:30px;
+    width:60px;
+    height:60px;
   }
 </style>
 
 <div class="cookie-item" on:click>
   <h2>{cookieLabel}</h2>
- <img src='./images/{cookieLabel}.svg' alt="">
+ <img src='./images/{cookieLabel}.svg' alt="{cookieLabel} icon">
   <div class="owned-container">
     <div class="icon-database icon"></div>
     <p>: {boxesOwned}</p>

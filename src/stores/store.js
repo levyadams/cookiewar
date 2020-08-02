@@ -1,2 +1,2 @@
 import { writable } from 'svelte/store';
-export const cash = writable(5000);
+export const cash = writable(2500);
